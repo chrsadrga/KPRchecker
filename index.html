@@ -18,7 +18,7 @@
 <body class="no-scrollbar">
 
     <div class="mobile-container overflow-x-hidden">
-        
+
         <nav class="p-5 flex justify-between items-center sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b">
             <div class="font-extrabold text-slate-900 text-lg tracking-tight">KPR<span class="text-emerald-600">CHECKER.</span></div>
             <div class="text-[10px] bg-slate-100 font-bold px-3 py-1 rounded-full text-slate-600 uppercase tracking-widest">Property Partner</div>
@@ -43,17 +43,17 @@
 
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Harga Unit (Rp)</label>
+                        <label for="harga" class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Harga Unit (Rp)</label>
                         <input type="number" id="harga" value="850000000" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700" oninput="calculateKPR()">
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">DP (Uang Muka)</label>
+                            <label for="dp" class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">DP (Uang Muka)</label>
                             <input type="number" id="dp" value="85000000" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 text-sm" oninput="calculateKPR()">
                         </div>
                         <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Tenor (Tahun)</label>
+                            <label for="tenor" class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Tenor (Tahun)</label>
                             <select id="tenor" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 text-sm" onchange="calculateKPR()">
                                 <option value="10">10 Thn</option>
                                 <option value="15">15 Thn</option>
@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="pt-4 border-t border-dashed">
-                        <label class="block text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-2 text-center">Estimasi Gaji Bersih (Single/Joint)</label>
+                        <label for="gaji" class="block text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-2 text-center">Estimasi Gaji Bersih (Single/Joint)</label>
                         <input type="range" id="gaji" min="5000000" max="50000000" step="500000" value="15000000" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-500" oninput="calculateKPR()">
                         <div class="text-center mt-2">
                             <span id="gajiDisplay" class="text-xl font-black text-slate-800">Rp 15.000.000</span>
@@ -113,16 +113,17 @@
             const dp = parseFloat(document.getElementById('dp').value) || 0;
             const tenorTahun = parseInt(document.getElementById('tenor').value);
             const gaji = parseFloat(document.getElementById('gaji').value);
-            
+
             // Display Gaji
             document.getElementById('gajiDisplay').innerText = "Rp " + gaji.toLocaleString('id-ID');
+            document.getElementById('gaji').setAttribute('aria-valuetext', "Rp " + gaji.toLocaleString('id-ID'));
 
             // Hitung Cicilan (Asumsi Bunga 7% p.a / 2026 Competitive)
             const bungaTahun = 0.07;
             const pokok = harga - dp;
             const totalBunga = pokok * bungaTahun * tenorTahun;
             const cicilanPerBulan = (pokok + totalBunga) / (tenorTahun * 12);
-            
+
             const cicilanFormatted = "Rp " + Math.round(cicilanPerBulan).toLocaleString('id-ID');
             document.getElementById('cicilanText').innerText = cicilanFormatted;
 
@@ -131,7 +132,7 @@
             const statusIcon = document.getElementById('statusIcon');
             const statusText = document.getElementById('statusText');
             const analysisText = document.getElementById('analysisText');
-            
+
             const rasio = cicilanPerBulan / gaji;
 
             if (rasio <= 0.33) {
