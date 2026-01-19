@@ -43,18 +43,18 @@
 
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Harga Unit (Rp)</label>
-                        <input type="number" id="harga" value="850000000" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700" oninput="calculateKPR()">
+                        <label for="harga" class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Harga Unit (Rp)</label>
+                        <input type="number" id="harga" value="850000000" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 focus:bg-white focus:ring-2 focus:ring-emerald-500 outline-none transition-colors" oninput="calculateKPR()">
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">DP (Uang Muka)</label>
-                            <input type="number" id="dp" value="85000000" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 text-sm" oninput="calculateKPR()">
+                            <label for="dp" class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">DP (Uang Muka)</label>
+                            <input type="number" id="dp" value="85000000" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-500 outline-none transition-colors" oninput="calculateKPR()">
                         </div>
                         <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Tenor (Tahun)</label>
-                            <select id="tenor" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 text-sm" onchange="calculateKPR()">
+                            <label for="tenor" class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Tenor (Tahun)</label>
+                            <select id="tenor" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 text-sm focus:bg-white focus:ring-2 focus:ring-emerald-500 outline-none transition-colors" onchange="calculateKPR()">
                                 <option value="10">10 Thn</option>
                                 <option value="15">15 Thn</option>
                                 <option value="20" selected>20 Thn</option>
