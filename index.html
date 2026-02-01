@@ -44,17 +44,19 @@
                 <div class="space-y-4">
                     <div>
                         <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Harga Unit (Rp)</label>
-                        <input type="number" id="harga" value="850000000" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700" oninput="calculateKPR()">
+                        <input type="number" id="harga" value="850000000" aria-describedby="hargaDisplay" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:bg-white outline-none transition-all" oninput="calculateKPR()">
+                        <div id="hargaDisplay" class="text-[10px] text-emerald-600 font-bold mt-1 text-right" aria-live="polite"></div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-3">
                         <div>
                             <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">DP (Uang Muka)</label>
-                            <input type="number" id="dp" value="85000000" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 text-sm" oninput="calculateKPR()">
+                            <input type="number" id="dp" value="85000000" aria-describedby="dpDisplay" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 text-sm focus:ring-2 focus:ring-emerald-500 focus:bg-white outline-none transition-all" oninput="calculateKPR()">
+                            <div id="dpDisplay" class="text-[10px] text-emerald-600 font-bold mt-1 text-right" aria-live="polite"></div>
                         </div>
                         <div>
                             <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Tenor (Tahun)</label>
-                            <select id="tenor" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 text-sm" onchange="calculateKPR()">
+                            <select id="tenor" class="w-full p-4 bg-slate-50 rounded-2xl border-none font-bold text-slate-700 text-sm focus:ring-2 focus:ring-emerald-500 focus:bg-white outline-none transition-all" onchange="calculateKPR()">
                                 <option value="10">10 Thn</option>
                                 <option value="15">15 Thn</option>
                                 <option value="20" selected>20 Thn</option>
@@ -114,6 +116,10 @@
             const tenorTahun = parseInt(document.getElementById('tenor').value);
             const gaji = parseFloat(document.getElementById('gaji').value);
             
+            // Display Helper Text (Currency Format)
+            document.getElementById('hargaDisplay').innerText = "Rp " + harga.toLocaleString('id-ID');
+            document.getElementById('dpDisplay').innerText = "Rp " + dp.toLocaleString('id-ID');
+
             // Display Gaji
             document.getElementById('gajiDisplay').innerText = "Rp " + gaji.toLocaleString('id-ID');
 
